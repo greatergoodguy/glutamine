@@ -32,4 +32,14 @@ public class God {
 			return actorPauseMenu;
 		}
 	}
+
+	private static ActorHero actorHero;
+	public static ActorHero ActorHero {
+		get  { 
+			if(actorHero == null) {
+				actorHero = GameObject.Find("World/Hero").GetComponent<ActorHero>();
+			} 
+			return actorHero;
+		}
+	}
 }
