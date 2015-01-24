@@ -15,11 +15,18 @@ public class ActorHero : Actor_Base {
 
 	CharacterController characterController;
 
+	ActorHeroCamera heroCamera;
 	ActorHeroVisual heroVisual;
 	Animator animator;
 
+	public void AddSFX(AudioSource sfx) {
+
+	}
+
 	void Awake() {
 		characterController = GetComponent<CharacterController>();
+
+		heroCamera = transform.FindChild("Main Camera").GetComponent<ActorHeroCamera>();
 
 		heroVisual = transform.FindChild("Visual").GetComponent<ActorHeroVisual>();
 		animator = heroVisual.GetComponent<Animator>();
