@@ -19,7 +19,7 @@ var inputMoveDirection : Vector3 = Vector3.zero;
 @System.NonSerialized
 var inputJump : boolean = false;
 
-class CharacterMotorMovement {
+public class CharacterMotorMovement {
 	// The maximum horizontal speed when moving
 	var maxForwardSpeed : float = 10.0;
 	

@@ -10,12 +10,15 @@ public class ActorHero : Actor_Base {
 
 	Hero_Base heroState = HeroMock.Instance;
 
+	CharacterController characterController;
+
 	ActorHero.Handler handler;
 
 	ActorHeroVisual heroVisual;
 
 	void Awake() {
 		heroVisual = transform.FindChild("Visual").GetComponent<ActorHeroVisual>();
+		characterController = GetComponent<CharacterController>();
 	}
 
 	void Start() {
@@ -35,20 +38,6 @@ public class ActorHero : Actor_Base {
 			heroState.Enter(handler);
 			UtilLogger.Log(TAG, heroState.GetType().Name + ": Enter");
 		}
-
-		posOld = posCurrent;
-		posCurrent = transform.position;
-
-//		UtilLogger.Log(TAG, "posOld, posCurrent: " + posOld + ", " + posCurrent);
-//
-//		if(!isMoving && !posOld.Equals(posCurrent)) {
-//			UtilLogger.Log(TAG, "isMoving: true");
-//			isMoving = true;
-//		}
-//		else if(isMoving && posOld.Equals(posCurrent)) {
-//			UtilLogger.Log(TAG, "isMoving: false");
-//			isMoving = false;
-//		}
 	}
 
 	Vector3 posOld = Vector3.zero;
@@ -65,6 +54,12 @@ public class ActorHero : Actor_Base {
 		}
 		
 		public void SetAnimation(int animation) {
+		}
+
+		public float VelocityMagnitude {
+			get {
+				return hero.characterController.velocity.magnitude;
+			}
 		}
 
 	}
