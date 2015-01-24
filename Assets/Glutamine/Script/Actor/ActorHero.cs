@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActorHero : MonoBehaviour {
+public class ActorHero : Actor_Base {
 
 	public static readonly string TAG = typeof(ActorHero).Name;
 
