@@ -8,7 +8,7 @@ public class HeroWalk : Hero_Base {
 	ActorHero.Handler handler;
 	
 	bool isFinished;
-	Hero_Base heroState;
+	Hero_Base nextHeroState;
 	
 	public override void Enter (ActorHero.Handler handler) {
 		base.Enter (handler);
@@ -23,17 +23,17 @@ public class HeroWalk : Hero_Base {
 	public override void Update () {
 		base.Update ();
 
-		if(handler.VelocityMagnitude < 0.1f) {
+		if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.DownArrow)) {
 			isFinished = true;
-			heroState = HeroStand.Instance;
+			nextHeroState = HeroWalkFront.Instance;
 		}
-		if(!handler.IsGrounded) {
+		else if(handler.VelocityMagnitude < 0.1f) {
 			isFinished = true;
-			heroState = HeroJump.Instance;
+			nextHeroState = HeroStand.Instance;
 		}
-		if(Input.GetKeyDown(KeyCode.DownArrow)) {
+		else if(!handler.IsGrounded) {
 			isFinished = true;
-			heroState = HeroWalkFront.Instance;
+			nextHeroState = HeroJump.Instance;
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class HeroWalk : Hero_Base {
 	}
 	
 	public override Hero_Base GetNextHero () {
-		return heroState;
+		return nextHeroState;
 	}
 	
 	private static HeroWalk instance;

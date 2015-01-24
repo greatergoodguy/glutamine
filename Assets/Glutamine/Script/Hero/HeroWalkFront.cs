@@ -21,6 +21,20 @@ public class HeroWalkFront : Hero_Base {
 	public override void Update () {
 		base.Update ();
 
+		bool getKeyUp = Input.GetKey(KeyCode.UpArrow);
+
+		if(handler.VelocityMagnitude > 0.1f && getKeyUp) {
+			isFinished = true;
+			nextHeroState = HeroWalk.Instance;
+		}
+		else if(handler.VelocityMagnitude < 0.1f) {
+			isFinished = true;
+			nextHeroState = HeroStand.Instance;
+		}
+		else if(!handler.IsGrounded) {
+			isFinished = true;
+			nextHeroState = HeroJump.Instance;
+		}
 	}
 
 	public override void Exit () {
