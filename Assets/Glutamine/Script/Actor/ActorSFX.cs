@@ -6,16 +6,27 @@ public class ActorSFX : Actor_Base {
 	AudioSource heroWalking;
 	public AudioSource HeroWalking {
 		get {
-			if(heroWalking == null) {
-				heroWalking = transform.FindChild("Hero Walking").GetComponent<AudioSource>();
-			}
 			return heroWalking;
 		}
 
 	}
 
+	AudioSource heroJump;
+	public AudioSource HeroJump {
+		get {
+			return heroJump;
+		}
+		
+	}
+
+	void Awake() {
+		heroWalking = transform.FindChild("Hero Walking").GetComponent<AudioSource>();
+		heroJump = transform.FindChild("Hero Jump").GetComponent<AudioSource>();
+	}
+
 	void Start() {
 		ActorHero hero = God.ActorHero;
+		hero.AddChildToCamera(heroWalking);
 	}
 
 }

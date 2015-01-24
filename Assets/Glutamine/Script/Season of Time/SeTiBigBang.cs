@@ -8,6 +8,7 @@ public class SeTiBigBang : SeTi_Base {
 	public override void Enter () {
 		base.Enter ();
 
+		God.ActorMainMenu.TurnOff();
 		God.ActorPauseMenu.TurnOff();
 	}
 	
@@ -16,7 +17,8 @@ public class SeTiBigBang : SeTi_Base {
 	}
 	
 	public override SeTi_Base GetNextSeason () {
-		return SeTiMainMenu.Instance;
+		//return SeTiMainMenu.Instance;
+		return SeTiWorld.Instance;
 	}
 	
 	private static SeTiBigBang instance;

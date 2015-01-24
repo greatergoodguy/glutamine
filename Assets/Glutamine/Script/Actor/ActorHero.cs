@@ -20,7 +20,11 @@ public class ActorHero : Actor_Base {
 	ActorHeroVisual heroVisual;
 	Animator animator;
 
-	public void AddCameraChild(GameObject child) {
+	public void AddChildToCamera(AudioSource child) {
+		AddChildToCamera(child.gameObject);
+	}
+
+	public void AddChildToCamera(GameObject child) {
 		child.transform.parent = heroCamera.transform;
 	}
 

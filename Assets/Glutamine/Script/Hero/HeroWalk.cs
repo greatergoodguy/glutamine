@@ -41,7 +41,7 @@ public class HeroWalk : Hero_Base {
 	public override void Exit () {
 		base.Exit ();
 
-		God.ActorSFX.HeroWalking.Stop();
+		God.ActorSFX.HeroWalking.Pause();
 	}
 	
 	public override bool IsFinished () {

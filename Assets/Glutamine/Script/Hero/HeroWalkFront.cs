@@ -16,6 +16,8 @@ public class HeroWalkFront : Hero_Base {
 
 		isFinished = false;
 		handler.SetAnimation(ActorHero.ANIMATION_WALK_FRONT);
+
+		God.ActorSFX.HeroWalking.Play();
 	}
 
 	public override void Update () {
@@ -44,6 +46,8 @@ public class HeroWalkFront : Hero_Base {
 
 	public override void Exit () {
 		base.Exit ();
+
+		God.ActorSFX.HeroWalking.Pause();
 	}
 
 	public override bool IsFinished () {
