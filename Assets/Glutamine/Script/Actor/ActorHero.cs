@@ -20,8 +20,8 @@ public class ActorHero : Actor_Base {
 	ActorHeroVisual heroVisual;
 	Animator animator;
 
-	public void AddSFX(AudioSource sfx) {
-
+	public void AddCameraChild(GameObject child) {
+		child.transform.parent = heroCamera.transform;
 	}
 
 	void Awake() {

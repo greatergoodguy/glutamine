@@ -52,4 +52,14 @@ public class God {
 			return actorSFX;
 		}
 	}
+
+	private static ActorMusic actorMusic;
+	public static ActorMusic ActorMusic {
+		get  { 
+			if(actorMusic == null) {
+				actorMusic = GameObject.Find("Music").GetComponent<ActorMusic>();
+			} 
+			return actorMusic;
+		}
+	}
 }

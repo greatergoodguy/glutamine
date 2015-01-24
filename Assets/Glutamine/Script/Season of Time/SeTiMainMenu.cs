@@ -19,12 +19,14 @@ public class SeTiMainMenu : SeTi_Base {
 		};
 
 		isFinished = false;
+		God.ActorMusic.StoryScene.Play();
 	}
 
 	public override void Exit () {
 		base.Exit ();
 
 		God.ActorMainMenu.TurnOff();
+		God.ActorMusic.StoryScene.Stop();
 	}
 
 	public override bool IsFinished () {

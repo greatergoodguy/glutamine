@@ -20,6 +20,8 @@ public class SeTiWorld : SeTi_Base {
 			isFinished = true;
 		};
 
+		God.ActorMusic.WorldTheme.Play();
+
 		isFinished = false;
 		Resume();
 	}
@@ -36,6 +38,7 @@ public class SeTiWorld : SeTi_Base {
 		base.Exit ();
 		
 		God.ActorPauseMenu.TurnOff();
+		God.ActorMusic.WorldTheme.Stop();
 	}
 
 	public override bool IsFinished () {
@@ -49,11 +52,13 @@ public class SeTiWorld : SeTi_Base {
 	void Pause() {
 		Time.timeScale = 0;
 		God.ActorPauseMenu.TurnOn();
+		God.ActorMusic.WorldTheme.Pause();
 	}
 
 	void Resume() {
 		Time.timeScale = 1;
 		God.ActorPauseMenu.TurnOff();
+		God.ActorMusic.WorldTheme.Play();
 	}
 
 	private static SeTiWorld instance;
