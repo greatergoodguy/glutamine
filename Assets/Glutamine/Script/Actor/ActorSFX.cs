@@ -16,7 +16,6 @@ public class ActorSFX : Actor_Base {
 
 	void Start() {
 		ActorHero hero = God.ActorHero;
-
 	}
 
 }
