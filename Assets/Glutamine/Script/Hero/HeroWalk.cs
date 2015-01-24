@@ -15,6 +15,7 @@ public class HeroWalk : Hero_Base {
 		this.handler = handler;
 		
 		isFinished = false;
+
 		handler.SetAnimation(ActorHero.ANIMATION_WALK);
 
 		God.ActorSFX.HeroWalking.Play();
