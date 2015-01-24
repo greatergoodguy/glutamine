@@ -16,6 +16,7 @@ public class HeroJump : Hero_Base {
 		isFinished = false;
 		
 		handler.SetAnimation(ActorHero.ANIMATION_JUMP);
+		God.ActorSFX.HeroJump.Play();
 	}
 
 	public override void Update () {
