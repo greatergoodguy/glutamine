@@ -30,6 +30,10 @@ public class HeroStand : Hero_Base {
 			isFinished = true;
 			heroState = HeroJump.Instance;
 		}
+		if(Input.GetKeyDown(KeyCode.DownArrow)) {
+			isFinished = true;
+			heroState = HeroWalkFront.Instance;
+		}
 	}
 
 	public override void Exit () {

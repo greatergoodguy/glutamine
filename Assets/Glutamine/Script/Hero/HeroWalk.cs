@@ -15,7 +15,6 @@ public class HeroWalk : Hero_Base {
 		this.handler = handler;
 		
 		isFinished = false;
-
 		handler.SetAnimation(ActorHero.ANIMATION_WALK);
 
 		God.ActorSFX.HeroWalking.Play();
@@ -31,6 +30,10 @@ public class HeroWalk : Hero_Base {
 		if(!handler.IsGrounded) {
 			isFinished = true;
 			heroState = HeroJump.Instance;
+		}
+		if(Input.GetKeyDown(KeyCode.DownArrow)) {
+			isFinished = true;
+			heroState = HeroWalkFront.Instance;
 		}
 	}
 	
