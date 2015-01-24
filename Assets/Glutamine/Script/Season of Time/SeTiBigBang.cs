@@ -7,6 +7,8 @@ public class SeTiBigBang : SeTi_Base {
 	
 	public override void Enter () {
 		base.Enter ();
+
+		God.ActorPauseMenu.TurnOff();
 	}
 	
 	public override bool IsFinished () {

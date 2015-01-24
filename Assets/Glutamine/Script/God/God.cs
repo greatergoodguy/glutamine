@@ -22,4 +22,14 @@ public class God {
 			return actorMainMenu;
 		}
 	}
+
+	private static ActorPauseMenu actorPauseMenu;
+	public static ActorPauseMenu ActorPauseMenu {
+		get  { 
+			if(actorPauseMenu == null) {
+				actorPauseMenu = GameObject.Find("Pause Menu").GetComponent<ActorPauseMenu>();
+			} 
+			return actorPauseMenu;
+		}
+	}
 }
