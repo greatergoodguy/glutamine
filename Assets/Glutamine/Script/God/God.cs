@@ -42,4 +42,14 @@ public class God {
 			return actorHero;
 		}
 	}
+
+	private static ActorSFX actorSFX;
+	public static ActorSFX ActorSFX {
+		get  { 
+			if(actorSFX == null) {
+				actorSFX = GameObject.Find("SFX").GetComponent<ActorSFX>();
+			} 
+			return actorSFX;
+		}
+	}
 }

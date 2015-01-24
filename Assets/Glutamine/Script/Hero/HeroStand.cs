@@ -9,6 +9,8 @@ public class HeroStand : Hero_Base {
 
 	bool isFinished;
 
+	Hero_Base heroState;
+
 	public override void Enter (ActorHero.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
@@ -22,6 +24,11 @@ public class HeroStand : Hero_Base {
 
 		if(handler.VelocityMagnitude > 0.1f) {
 			isFinished = true;
+			heroState = HeroStand.Instance;
+		}
+		if(!handler.IsGrounded) {
+			isFinished = true;
+			heroState = HeroJump.Instance;
 		}
 	}
 

@@ -7,6 +7,7 @@ public class ActorHero : Actor_Base {
 
 	public static readonly int ANIMATION_STAND = 0;
 	public static readonly int ANIMATION_WALK = 1;
+	public static readonly int ANIMATION_JUMP = 2;
 
 	Hero_Base heroState = HeroStand.Instance;
 
@@ -63,6 +64,12 @@ public class ActorHero : Actor_Base {
 		public float VelocityMagnitude {
 			get {
 				return hero.characterController.velocity.magnitude;
+			}
+		}
+
+		public bool IsGrounded {
+			get {
+				return hero.characterController.isGrounded;
 			}
 		}
 

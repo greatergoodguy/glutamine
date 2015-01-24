@@ -8,6 +8,7 @@ public class HeroWalk : Hero_Base {
 	ActorHero.Handler handler;
 	
 	bool isFinished;
+	Hero_Base heroState;
 	
 	public override void Enter (ActorHero.Handler handler) {
 		base.Enter (handler);
@@ -20,9 +21,14 @@ public class HeroWalk : Hero_Base {
 	
 	public override void Update () {
 		base.Update ();
-		
+
 		if(handler.VelocityMagnitude < 0.1f) {
 			isFinished = true;
+			heroState = HeroStand.Instance;
+		}
+		if(!handler.IsGrounded) {
+			isFinished = true;
+			heroState = HeroJump.Instance;
 		}
 	}
 	
@@ -35,7 +41,7 @@ public class HeroWalk : Hero_Base {
 	}
 	
 	public override Hero_Base GetNextHero () {
-		return HeroStand.Instance;
+		return heroState;
 	}
 	
 	private static HeroWalk instance;
