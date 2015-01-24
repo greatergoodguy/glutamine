@@ -22,11 +22,15 @@ public class HeroStand : Hero_Base {
 	public override void Update () {
 		base.Update ();
 
-		if(handler.VelocityMagnitude > 0.1f) {
+		if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.DownArrow)) {
 			isFinished = true;
-			heroState = HeroStand.Instance;
+			heroState = HeroWalkFront.Instance;
 		}
-		if(!handler.IsGrounded) {
+		else if(handler.VelocityMagnitude > 0.1f) {
+			isFinished = true;
+			heroState = HeroWalk.Instance;
+		}
+		else if(!handler.IsGrounded) {
 			isFinished = true;
 			heroState = HeroJump.Instance;
 		}
