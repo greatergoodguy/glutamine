@@ -5,20 +5,31 @@ public class ActorHero : Actor_Base {
 
 	public static readonly string TAG = typeof(ActorHero).Name;
 
-	public static readonly int HERO_STATE_STAND = 0;
-	public static readonly int HERO_STATE_WALK = 1;
+	public static readonly int ANIMATION_STAND = 0;
+	public static readonly int ANIMATION_WALK = 1;
+	public static readonly int ANIMATION_JUMP = 2;
 
-	Hero_Base heroState = HeroMock.Instance;
-
-	CharacterController characterController;
+	Hero_Base heroState = HeroStand.Instance;
 
 	ActorHero.Handler handler;
 
+	CharacterController characterController;
+
+	ActorHeroCamera heroCamera;
 	ActorHeroVisual heroVisual;
+	Animator animator;
+
+	public void AddSFX(AudioSource sfx) {
+
+	}
 
 	void Awake() {
-		heroVisual = transform.FindChild("Visual").GetComponent<ActorHeroVisual>();
 		characterController = GetComponent<CharacterController>();
+
+		heroCamera = transform.FindChild("Main Camera").GetComponent<ActorHeroCamera>();
+
+		heroVisual = transform.FindChild("Visual").GetComponent<ActorHeroVisual>();
+		animator = heroVisual.GetComponent<Animator>();
 	}
 
 	void Start() {
@@ -54,11 +65,18 @@ public class ActorHero : Actor_Base {
 		}
 		
 		public void SetAnimation(int animation) {
+			hero.animator.SetInteger("Animation", animation);
 		}
 
 		public float VelocityMagnitude {
 			get {
 				return hero.characterController.velocity.magnitude;
+			}
+		}
+
+		public bool IsGrounded {
+			get {
+				return hero.characterController.isGrounded;
 			}
 		}
 

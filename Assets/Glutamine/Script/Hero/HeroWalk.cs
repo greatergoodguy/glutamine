@@ -1,28 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HeroStand : Hero_Base {
-
-	public static readonly string TAG = typeof(HeroStand).Name;
-
+public class HeroWalk : Hero_Base {
+	
+	public static readonly string TAG = typeof(HeroWalk).Name;
+	
 	ActorHero.Handler handler;
-
+	
 	bool isFinished;
-
 	Hero_Base heroState;
-
+	
 	public override void Enter (ActorHero.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
-
+		
 		isFinished = false;
-		handler.SetAnimation(ActorHero.ANIMATION_STAND);
-	}
 
+		handler.SetAnimation(ActorHero.ANIMATION_WALK);
+
+		God.ActorSFX.HeroWalking.Play();
+	}
+	
 	public override void Update () {
 		base.Update ();
 
-		if(handler.VelocityMagnitude > 0.1f) {
+		if(handler.VelocityMagnitude < 0.1f) {
 			isFinished = true;
 			heroState = HeroStand.Instance;
 		}
@@ -31,26 +33,28 @@ public class HeroStand : Hero_Base {
 			heroState = HeroJump.Instance;
 		}
 	}
-
+	
 	public override void Exit () {
 		base.Exit ();
-	}
 
+		God.ActorSFX.HeroWalking.Stop();
+	}
+	
 	public override bool IsFinished () {
 		return isFinished;
 	}
-
+	
 	public override Hero_Base GetNextHero () {
-		return HeroWalk.Instance;
+		return heroState;
 	}
 	
-	private static HeroStand instance;
-	private HeroStand() {}
-	public static HeroStand Instance {
+	private static HeroWalk instance;
+	private HeroWalk() {}
+	public static HeroWalk Instance {
 		get 
 		{
 			if (instance == null) {
-				instance = new HeroStand();}
+				instance = new HeroWalk();}
 			
 			return instance;
 		}
