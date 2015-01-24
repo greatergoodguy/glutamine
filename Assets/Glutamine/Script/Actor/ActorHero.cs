@@ -39,7 +39,7 @@ public class ActorHero : Actor_Base {
 		posOld = posCurrent;
 		posCurrent = transform.position;
 
-		UtilLogger.Log(TAG, "posOld, posCurrent: " + posOld + ", " + posCurrent);
+//		UtilLogger.Log(TAG, "posOld, posCurrent: " + posOld + ", " + posCurrent);
 //
 //		if(!isMoving && !posOld.Equals(posCurrent)) {
 //			UtilLogger.Log(TAG, "isMoving: true");

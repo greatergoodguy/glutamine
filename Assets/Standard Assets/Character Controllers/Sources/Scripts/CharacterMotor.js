@@ -22,7 +22,9 @@ var inputJump : boolean = false;
 class CharacterMotorMovement {
 	// The maximum horizontal speed when moving
 	var maxForwardSpeed : float = 10.0;
-	var maxSidewaysSpeed : float = 10.0;
+	
+	@Range(1, 1000)
+	var maxSidewaysSpeed : float = 100.0;
 	var maxBackwardsSpeed : float = 10.0;
 	
 	// Curve for multiplying speed based on slope (negative = downwards)
