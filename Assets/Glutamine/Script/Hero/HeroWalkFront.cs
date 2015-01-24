@@ -22,8 +22,13 @@ public class HeroWalkFront : Hero_Base {
 		base.Update ();
 
 		bool getKeyUp = Input.GetKey(KeyCode.UpArrow);
+		bool getKeyDown = Input.GetKey(KeyCode.DownArrow);
+		bool getKeyLeft = Input.GetKey(KeyCode.LeftArrow);
+		bool getKeyRight = Input.GetKey(KeyCode.RightArrow);
 
-		if(handler.VelocityMagnitude > 0.1f && getKeyUp) {
+		bool getKey = getKeyUp || (getKeyLeft && !getKeyDown) || (getKeyRight && !getKeyDown);
+
+		if(handler.VelocityMagnitude > 0.1f && getKey) {
 			isFinished = true;
 			nextHeroState = HeroWalk.Instance;
 		}
