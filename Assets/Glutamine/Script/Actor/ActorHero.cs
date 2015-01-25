@@ -9,6 +9,7 @@ public class ActorHero : Actor_Base {
 	public static readonly int ANIMATION_WALK = 1;
 	public static readonly int ANIMATION_JUMP = 2;
 	public static readonly int ANIMATION_WALK_FRONT = 3;
+	public static readonly int ANIMATION_WALK_BACK = 4;
 
 	Hero_Base heroState = HeroStand.Instance;
 

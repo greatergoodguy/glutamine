@@ -1,36 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HeroWalk : Hero_Base {
+public class HeroWalkBack : Hero_Base {
 	
-	public static readonly string TAG = typeof(HeroWalk).Name;
-	
+	public static readonly string TAG = typeof(HeroWalkBack).Name;
+
 	ActorHero.Handler handler;
-	
+
 	bool isFinished;
 	Hero_Base nextHeroState;
-	
+
 	public override void Enter (ActorHero.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
-		
-		isFinished = false;
 
-		handler.SetAnimation(ActorHero.ANIMATION_WALK);
+		isFinished = false;
+		handler.SetAnimation(ActorHero.ANIMATION_WALK_BACK);
 
 		God.ActorSFX.HeroWalking.Play();
 	}
-	
+
 	public override void Update () {
 		base.Update ();
 
-		if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.DownArrow)) {
+		bool getKeyUp = Input.GetKey(KeyCode.UpArrow);
+		bool getKeyDown = Input.GetKey(KeyCode.DownArrow);
+		bool getKeyLeft = Input.GetKey(KeyCode.LeftArrow);
+		bool getKeyRight = Input.GetKey(KeyCode.RightArrow);
+
+		bool getKey = (getKeyLeft && !getKeyUp) || (getKeyRight && !getKeyUp);
+
+		if(handler.VelocityMagnitude > 0.1f && getKeyDown) {
 			isFinished = true;
 			nextHeroState = HeroWalkFront.Instance;
 		}
-		else if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.UpArrow)) {
+		else if(handler.VelocityMagnitude > 0.1f && getKey) {
 			isFinished = true;
-			nextHeroState = HeroWalkBack.Instance;
+			nextHeroState = HeroWalk.Instance;
 		}
 		else if(handler.VelocityMagnitude < 0.1f) {
 			isFinished = true;
@@ -41,28 +47,28 @@ public class HeroWalk : Hero_Base {
 			nextHeroState = HeroJump.Instance;
 		}
 	}
-	
+
 	public override void Exit () {
 		base.Exit ();
 
 		God.ActorSFX.HeroWalking.Pause();
 	}
-	
+
 	public override bool IsFinished () {
 		return isFinished;
 	}
-	
+
 	public override Hero_Base GetNextHero () {
 		return nextHeroState;
 	}
-	
-	private static HeroWalk instance;
-	private HeroWalk() {}
-	public static HeroWalk Instance {
+
+	private static HeroWalkBack instance;
+	private HeroWalkBack() {}
+	public static HeroWalkBack Instance {
 		get 
 		{
 			if (instance == null) {
-				instance = new HeroWalk();}
+				instance = new HeroWalkBack();}
 			
 			return instance;
 		}

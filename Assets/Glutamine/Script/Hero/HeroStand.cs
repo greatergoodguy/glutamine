@@ -26,6 +26,10 @@ public class HeroStand : Hero_Base {
 			isFinished = true;
 			heroState = HeroWalkFront.Instance;
 		}
+		else if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.UpArrow)) {
+			isFinished = true;
+			heroState = HeroWalkBack.Instance;
+		}
 		else if(handler.VelocityMagnitude > 0.1f) {
 			isFinished = true;
 			heroState = HeroWalk.Instance;
