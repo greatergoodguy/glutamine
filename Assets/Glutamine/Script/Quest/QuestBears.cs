@@ -4,7 +4,7 @@ using System.Collections;
 public class QuestBears : MonoBehaviour {
 
 	private static readonly float TOTAL_DURATION = 7.0f;
-	private static readonly int ACCUMULATOR_NUM = 4;
+	private static readonly int ACCUMULATOR_NUM = 3;
 
 	float elapsedTime = 0;
 	bool isStarted = false;
