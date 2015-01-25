@@ -16,7 +16,6 @@ public class ActorSFX : Actor_Base {
 		get {
 			return heroJump;
 		}
-		
 	}
 
 	AudioSource startMenuButton;

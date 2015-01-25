@@ -15,6 +15,7 @@ public class SeTiMainMenu : SeTi_Base {
 		God.ActorMainMenu.TurnOn();
 		God.ActorMainMenu.actionPlay += () => {
 			UtilLogger.Log(TAG, "actionPlay");
+			God.ActorSFX.StartMenuButton.Play();
 			isFinished = true;
 		};
 

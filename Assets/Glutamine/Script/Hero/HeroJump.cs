@@ -8,6 +8,8 @@ public class HeroJump : Hero_Base {
 	ActorHero.Handler handler;
 	
 	bool isFinished;
+
+	bool isFirstTime = true;
 	
 	public override void Enter (ActorHero.Handler handler) {
 		base.Enter (handler);
@@ -16,7 +18,12 @@ public class HeroJump : Hero_Base {
 		isFinished = false;
 		
 		handler.SetAnimation(ActorHero.ANIMATION_JUMP);
-		God.ActorSFX.HeroJump.Play();
+
+		if(!isFirstTime) {
+			God.ActorSFX.HeroJump.Play();}
+		else {
+			isFirstTime = false;
+		}
 	}
 
 	public override void Update () {
