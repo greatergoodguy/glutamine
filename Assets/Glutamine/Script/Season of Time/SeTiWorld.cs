@@ -22,8 +22,9 @@ public class SeTiWorld : SeTi_Base {
 			isFinished = true;
 		};
 
-		isFinished = false;
 
+		God.ActorWorld.Reset();
+		isFinished = false;
 		Resume();
 	}
 
