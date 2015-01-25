@@ -8,13 +8,6 @@ public class SeTiWorld : SeTi_Base {
 	bool isFinished;
 
 	bool isPaused;
-	bool isFirstTrackPlaying = true;
-
-	AudioSource firstTrack;
-	AudioSource secondTrack;
-
-	AudioSource activeTrack;
-
 
 	public override void Enter () {
 		base.Enter ();
@@ -29,18 +22,8 @@ public class SeTiWorld : SeTi_Base {
 			isFinished = true;
 		};
 
-		firstTrack = God.ActorMusic.TestFirstTrack;
-		//firstTrack = God.ActorSFX.HeroWalking;
-		firstTrack.Play();
-		firstTrack.loop = false;
-
-		secondTrack = God.ActorMusic.TestSecondTrack;
-		secondTrack.loop = true;
-
-		activeTrack = firstTrack;
-
 		isFinished = false;
-		isFirstTrackPlaying = true;
+
 		Resume();
 	}
 
@@ -50,24 +33,14 @@ public class SeTiWorld : SeTi_Base {
 		if(Input.GetKeyDown(KeyCode.Escape)) {
 			Pause();
 		}
-
-		if(isFirstTrackPlaying && !firstTrack.isPlaying && !isPaused) {
-			StartSecondTrack();
-		}
 	}
 
-	void StartSecondTrack() {
-		secondTrack.Play();
-		activeTrack = secondTrack;
-		isFirstTrackPlaying = false;
-	}
 	
 	public override void Exit () {
 		base.Exit ();
 		
 		God.ActorPauseMenu.TurnOff();
-		firstTrack.Stop();
-		secondTrack.Stop();
+		God.ActorMusic.WorldTheme.Stop();
 	}
 
 	public override bool IsFinished () {
@@ -82,14 +55,14 @@ public class SeTiWorld : SeTi_Base {
 		isPaused = true;
 		Time.timeScale = 0;
 		God.ActorPauseMenu.TurnOn();
-		activeTrack.Pause();
+		God.ActorMusic.WorldTheme.Pause();
 	}
 
 	void Resume() {
 		isPaused = false;
 		Time.timeScale = 1;
 		God.ActorPauseMenu.TurnOff();
-		activeTrack.Play();
+		God.ActorMusic.WorldTheme.Play();
 	}
 
 	private static SeTiWorld instance;

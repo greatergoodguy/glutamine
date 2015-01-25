@@ -27,6 +27,7 @@ public class ActorHero : Actor_Base {
 
 	public void AddChildToCamera(GameObject child) {
 		child.transform.parent = heroCamera.transform;
+		child.transform.localPosition = Vector3.zero;
 	}
 
 	void Awake() {
