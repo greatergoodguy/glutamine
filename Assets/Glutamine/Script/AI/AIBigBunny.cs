@@ -7,12 +7,16 @@ public class AIBigBunny : MonoBehaviour {
 
 	AudioSource audio;
 
+	Object oSpeechCloner;
+	GameObject goSpeech;
+
 	void Awake() {
 		audio = GetComponent<AudioSource>();
 	}
 
 	void Start () {
-	
+
+		oSpeechCloner = Resources.Load("Speech", typeof(GameObject));
 	}
 	
 	// Update is called once per frame
@@ -24,6 +28,16 @@ public class AIBigBunny : MonoBehaviour {
 		UtilLogger.Log(TAG, "OnTriggerEnter()");
 		if(other.tag == "Player") {
 			audio.Play();
+
+			goSpeech = GameObject.Instantiate(oSpeechCloner) as GameObject;
+			goSpeech.transform.parent = transform;
+		}
+	}
+
+	void OnTriggerExit(Collider other) {
+		UtilLogger.Log(TAG, "OnTriggerEnter()");
+		if(other.tag == "Player") {
+			Destroy(goSpeech);
 		}
 	}
 }
