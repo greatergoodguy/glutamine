@@ -24,11 +24,14 @@ public class HeroWalk : Hero_Base {
 	public override void Update () {
 		base.Update ();
 
-		if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.DownArrow)) {
+		bool getKey_Down = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+		bool getKey_Up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+
+		if(handler.VelocityMagnitude > 0.1f && getKey_Down) {
 			isFinished = true;
 			nextHeroState = HeroWalkFront.Instance;
 		}
-		else if(handler.VelocityMagnitude > 0.1f && Input.GetKey(KeyCode.UpArrow)) {
+		else if(handler.VelocityMagnitude > 0.1f && getKey_Up) {
 			isFinished = true;
 			nextHeroState = HeroWalkBack.Instance;
 		}

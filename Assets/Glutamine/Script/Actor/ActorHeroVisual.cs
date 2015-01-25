@@ -16,12 +16,13 @@ public class ActorHeroVisual : Actor_Base {
 	}
 
 	void Update () {
-		bool isLeftArrowDown = Input.GetKey(KeyCode.LeftArrow);
-		UtilLogger.Log(TAG, "Update() - isLeftArrowDown, isFacingRight: " + isLeftArrowDown + ", " + isFacingRight);
-		if(Input.GetKey(KeyCode.LeftArrow) && isFacingRight) {
+		bool getKey_Left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+		if(getKey_Left && isFacingRight) {
 			LookLeft();
 		}
-		if(Input.GetKey(KeyCode.RightArrow) && !isFacingRight) {
+
+		bool getKey_Right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+		if(getKey_Right && !isFacingRight) {
 			LookRight();
 		}
 	}

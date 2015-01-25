@@ -23,18 +23,19 @@ public class HeroWalkFront : Hero_Base {
 	public override void Update () {
 		base.Update ();
 
-		bool getKeyUp = Input.GetKey(KeyCode.UpArrow);
-		bool getKeyDown = Input.GetKey(KeyCode.DownArrow);
-		bool getKeyLeft = Input.GetKey(KeyCode.LeftArrow);
-		bool getKeyRight = Input.GetKey(KeyCode.RightArrow);
+		bool getKey_Up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+		bool getKey_Down = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+		bool getKey_Left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+		bool getKey_Right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 
-		bool getKey1 = (getKeyLeft && !getKeyDown) || (getKeyRight && !getKeyDown);
+		bool getKey_OnlyUp = getKey_Up && !getKey_Down;
+		bool getKey_OnlyLeftOrOnlyRight = (getKey_Left && !getKey_Down) || (getKey_Right && !getKey_Down);
 
-		if(handler.VelocityMagnitude > 0.1f && getKeyUp) {
+		if(handler.VelocityMagnitude > 0.1f && getKey_Up) {
 			isFinished = true;
-			nextHeroState = HeroWalkFront.Instance;
+			nextHeroState = HeroWalkBack.Instance;
 		}
-		else if(handler.VelocityMagnitude > 0.1f && getKey1) {
+		else if(handler.VelocityMagnitude > 0.1f && getKey_OnlyLeftOrOnlyRight) {
 			isFinished = true;
 			nextHeroState = HeroWalk.Instance;
 		}
