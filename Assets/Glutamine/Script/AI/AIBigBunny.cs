@@ -5,14 +5,8 @@ public class AIBigBunny : MonoBehaviour {
 
 	public static readonly string TAG = typeof(AIBigBunny).Name;
 
-	AudioSource audio;
-
 	Object oSpeechCloner;
 	GameObject goSpeech;
-
-	void Awake() {
-		audio = GetComponent<AudioSource>();
-	}
 
 	void Start () {
 
