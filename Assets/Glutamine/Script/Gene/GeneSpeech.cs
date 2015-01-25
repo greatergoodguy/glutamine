@@ -20,8 +20,6 @@ public class GeneSpeech : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		UtilLogger.Log(TAG, "OnTriggerEnter()");
 		if(other.tag == "Player") {
-			audio.Play();
-
 			if(text == null) {
 				text = "";}
 

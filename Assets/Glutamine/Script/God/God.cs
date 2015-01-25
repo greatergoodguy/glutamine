@@ -115,10 +115,22 @@ public class God {
 		
 		GameObject goSpeech = GameObject.Instantiate(oClonerSpeechLarge) as GameObject;
 		goSpeech.transform.parent = parent;
-		goSpeech.transform.localPosition = new Vector3(0, 3.5f, 0);
+		goSpeech.transform.localPosition = new Vector3(0, 3.5f, -0.3f);
 		
 		AISpeech speech = goSpeech.GetComponent<AISpeech>();
 		speech.SetText(text);
+		
+		return goSpeech;
+	}
+
+	static Object oClonerActionBubble;
+	public static GameObject CreateSpeechActionBubble(Transform parent) {
+		if(oClonerActionBubble == null) {
+			oClonerActionBubble = Resources.Load("Action Bubble", typeof(GameObject));}
+		
+		GameObject goSpeech = GameObject.Instantiate(oClonerActionBubble) as GameObject;
+		goSpeech.transform.parent = parent;
+		goSpeech.transform.localPosition = new Vector3(0, 0, -0.3f);
 		
 		return goSpeech;
 	}
