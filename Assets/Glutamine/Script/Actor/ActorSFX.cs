@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ActorSFX : Actor_Base {
@@ -34,9 +34,9 @@ public class ActorSFX : Actor_Base {
 
 	void Start() {
 		ActorHero hero = God.ActorHero;
-		hero.AddChildToCamera(heroWalking);
-		hero.AddChildToCamera(heroJump);
-		hero.AddChildToCamera(startMenuButton);
+		hero.AddAudioSource(heroWalking);
+		hero.AddAudioSource(heroJump);
+		hero.AddAudioSource(startMenuButton);
 	}
 
 }

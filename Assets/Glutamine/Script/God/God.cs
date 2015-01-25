@@ -62,4 +62,64 @@ public class God {
 			return actorMusic;
 		}
 	}
+
+	static Object oClonerSpeech;
+	public static GameObject CreateSpeechBubble(string text, Transform parent) {
+		if(oClonerSpeech == null) {
+			oClonerSpeech = Resources.Load("Speech", typeof(GameObject));}
+
+		GameObject goSpeech = GameObject.Instantiate(oClonerSpeech) as GameObject;
+		goSpeech.transform.parent = parent;
+		goSpeech.transform.localPosition = new Vector3(0, 3.5f, 0);
+
+		AISpeech speech = goSpeech.GetComponent<AISpeech>();
+		speech.SetText(text);
+
+		return goSpeech;
+	}
+
+	static Object oClonerSpeechSmall;
+	public static GameObject CreateSpeechBubbleSmall(string text, Transform parent) {
+		if(oClonerSpeechSmall == null) {
+			oClonerSpeechSmall = Resources.Load("Speech Small", typeof(GameObject));}
+		
+		GameObject goSpeech = GameObject.Instantiate(oClonerSpeechSmall) as GameObject;
+		goSpeech.transform.parent = parent;
+		goSpeech.transform.localPosition = new Vector3(0, 3.5f, 0);
+		
+		AISpeech speech = goSpeech.GetComponent<AISpeech>();
+		speech.SetText(text);
+		
+		return goSpeech;
+	}
+
+	static Object oClonerSpeechMedium;
+	public static GameObject CreateSpeechBubbleMedium(string text, Transform parent) {
+		if(oClonerSpeechMedium == null) {
+			oClonerSpeechMedium = Resources.Load("Speech Medium", typeof(GameObject));}
+		
+		GameObject goSpeech = GameObject.Instantiate(oClonerSpeechMedium) as GameObject;
+		goSpeech.transform.parent = parent;
+		goSpeech.transform.localPosition = new Vector3(0, 3.5f, 0);
+		
+		AISpeech speech = goSpeech.GetComponent<AISpeech>();
+		speech.SetText(text);
+		
+		return goSpeech;
+	}
+
+	static Object oClonerSpeechLarge;
+	public static GameObject CreateSpeechBubbleLarge(string text, Transform parent) {
+		if(oClonerSpeechLarge == null) {
+			oClonerSpeechLarge = Resources.Load("Speech Large", typeof(GameObject));}
+		
+		GameObject goSpeech = GameObject.Instantiate(oClonerSpeechLarge) as GameObject;
+		goSpeech.transform.parent = parent;
+		goSpeech.transform.localPosition = new Vector3(0, 3.5f, 0);
+		
+		AISpeech speech = goSpeech.GetComponent<AISpeech>();
+		speech.SetText(text);
+		
+		return goSpeech;
+	}
 }

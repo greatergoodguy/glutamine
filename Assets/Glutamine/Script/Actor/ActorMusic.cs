@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ActorMusic : Actor_Base {
@@ -25,7 +25,7 @@ public class ActorMusic : Actor_Base {
 
 	void Start() {
 		ActorHero hero = God.ActorHero;
-		hero.AddChildToCamera(worldTheme);
-		hero.AddChildToCamera(storyScene);
+		hero.AddAudioSource(worldTheme);
+		hero.AddAudioSource(storyScene);
 	}
 }
