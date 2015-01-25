@@ -6,7 +6,8 @@ public class GeneSpeech : MonoBehaviour {
 	public enum Size {
 		Small,
 		Medium,
-		Large
+		Large,
+		Front
 	}
 
 	public static readonly string TAG = typeof(GeneSpeech).Name;
@@ -32,6 +33,9 @@ public class GeneSpeech : MonoBehaviour {
 				break;
 			case Size.Large:
 				goSpeech = God.CreateSpeechBubbleLarge(text, transform);
+				break;
+			case Size.Front:
+				goSpeech = God.CreateSpeechBubbleFront(text, transform);
 				break;
 			}
 		}

@@ -134,4 +134,19 @@ public class God {
 		
 		return goSpeech;
 	}
+
+	static Object oClonerSpeechFront;
+	public static GameObject CreateSpeechBubbleFront(string text, Transform parent) {
+		if(oClonerSpeechFront == null) {
+			oClonerSpeechFront = Resources.Load("Speech Small", typeof(GameObject));}
+		
+		GameObject goSpeech = GameObject.Instantiate(oClonerSpeechFront) as GameObject;
+		goSpeech.transform.parent = parent;
+		goSpeech.transform.localPosition = new Vector3(0, 1.3f, -0.8f);
+		
+		AISpeech speech = goSpeech.GetComponent<AISpeech>();
+		speech.SetText(text);
+		
+		return goSpeech;
+	}
 }
