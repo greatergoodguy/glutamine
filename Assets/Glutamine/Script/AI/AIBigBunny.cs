@@ -21,7 +21,7 @@ public class AIBigBunny : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		UtilLogger.Log(TAG, "OnTriggerEnter()");
 		if(other.tag == "Player") {
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 
 			goSpeech = GameObject.Instantiate(oSpeechCloner) as GameObject;
 			goSpeech.transform.parent = transform;

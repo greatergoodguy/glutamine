@@ -5,7 +5,7 @@ using System.Collections;
 public class AICindysHouse : MonoBehaviour {
 
 	public void Activate() {
-		audio.Play();
+		GetComponent<AudioSource>().Play();
 	}
 
 }

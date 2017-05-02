@@ -10,7 +10,7 @@ public class AIAppleTrigger : MonoBehaviour {
 
 		GameObject go = GameObject.Instantiate(oCloner) as GameObject;
 		go.transform.position = transform.position;
-		go.rigidbody.AddForce(new Vector3(0.5f, 1.0f, 0));
+		go.GetComponent<Rigidbody>().AddForce(new Vector3(0.5f, 1.0f, 0));
 
 		go.AddComponent<GeneSuicide>();
 

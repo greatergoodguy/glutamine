@@ -10,7 +10,7 @@ public class AILuLu : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		UtilLogger.Log(TAG, "OnTriggerEnter()");
 		if(other.tag == "Player") {
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 			
 			goSpeech = God.CreateSpeechBubble("text", transform);
 		}

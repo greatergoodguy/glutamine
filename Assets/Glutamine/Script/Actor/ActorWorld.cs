@@ -13,4 +13,10 @@ public class ActorWorld : Actor_Base {
 		God.ActorHero.transform.position = vecStartPos;
 	}
 
+	void Update() {
+		if (ActorHero.I.transform.position.y < -100.0f) {
+			Reset();
+		}
+	}
+
 }

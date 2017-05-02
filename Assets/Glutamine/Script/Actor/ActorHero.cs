@@ -5,6 +5,8 @@ public class ActorHero : Actor_Base {
 
 	public static readonly string TAG = typeof(ActorHero).Name;
 
+	public static ActorHero I;
+
 	public static readonly int ANIMATION_STAND = 0;
 	public static readonly int ANIMATION_WALK = 1;
 	public static readonly int ANIMATION_JUMP = 2;
@@ -27,6 +29,8 @@ public class ActorHero : Actor_Base {
 	}
 
 	void Awake() {
+		I = this;
+
 		characterController = GetComponent<CharacterController>();
 
 		heroCamera = transform.FindChild("Main Camera").GetComponent<ActorHeroCamera>();

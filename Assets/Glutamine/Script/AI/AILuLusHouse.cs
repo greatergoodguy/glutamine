@@ -5,7 +5,7 @@ using System.Collections;
 public class AILuLusHouse : MonoBehaviour {
 
 	public void Activate() {
-		audio.Play();
+		GetComponent<AudioSource>().Play();
 	}
 
 }

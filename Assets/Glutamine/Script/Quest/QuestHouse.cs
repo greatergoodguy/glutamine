@@ -12,7 +12,7 @@ public class QuestHouse : MonoBehaviour {
 	}
 	
 	public void Activate() {
-		goHouse.rigidbody.AddRelativeTorque(50000 * Vector3.forward);
+		goHouse.GetComponent<Rigidbody>().AddRelativeTorque(50000 * Vector3.forward);
 
 		GeneSpeech geneSpeech = goBoy.GetComponent<GeneSpeech>();
 		geneSpeech.text = "WHY DID YOU DO THAT!!!";
